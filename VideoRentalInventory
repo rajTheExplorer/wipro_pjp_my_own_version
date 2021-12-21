@@ -1,0 +1,74 @@
+import java.io.*;
+import java.util.*;
+import java.util.Arrays;
+public class App
+{
+    ArrayList<String> al1=new ArrayList<String>();
+    ArrayList<String> al2=new ArrayList<String>();
+    ArrayList<Integer> al3=new ArrayList<Integer>();
+
+    public void addVideos(String videoName)
+    {
+        videoName=videoName.toLowerCase();
+        al1.add(videoName);
+        System.out.println("video added successfully ");
+    }
+    public void checkOutVideo()
+    {
+        al2.add("true");
+        System.out.println("video checked out successfully");
+    }
+    public void returnVideo()
+    {
+        al2.remove("true");
+        al2.add("false");
+        System.out.println("video has been returned succesfully");
+    }
+    public void recieveRating(int rating)
+    {
+        al3.add(rating);
+        System.out.println("Rating has been mapped to video");
+    }
+    public void viewAll()
+    {
+        System.out.println();
+        for(int i=0;i<al1.size();i++)
+        {
+            System.out.println(al1.get(i)+" "+al2.get(i)+" "+al3.get(i));
+        }
+    }
+    public void changeCheckoutStatus(String movie,String stat)
+    {
+        for(int q=0;q<al1.size();q++)
+        {
+            if(al1.get(q)==movie)
+            {
+                al2.add(q,stat);
+            }
+        }
+    }
+    public void changeRating(String movie,int rat)
+    {
+        for(int q=0;q<al1.size();q++)
+        {
+            if(al1.get(q)==movie)
+            {
+                al3.add(q,rat);
+            }
+        }
+    }
+    public static void main(String[] args) {
+        App a=new App();
+        a.addVideos("kick");
+        a.checkOutVideo();
+        a.recieveRating(4);
+        a.addVideos("fida");
+        a.checkOutVideo();
+        a.recieveRating(5);
+        a.viewAll();
+        a.changeCheckoutStatus("kick","false");
+        a.viewAll();
+        a.changeRating("fida",4);
+        a.viewAll();
+    }
+}
