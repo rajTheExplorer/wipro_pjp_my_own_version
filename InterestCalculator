@@ -1,0 +1,225 @@
+import java.io.*;
+import java.util.*;
+import java.util.Arrays;
+abstract class Account
+{
+    int amount=0;
+    int days=0;
+    int age=0;
+    double interestRate=0;
+    int months=0;
+    public void calculateInterest()
+    {
+
+    }
+}
+class sb extends Account
+{
+    public void calculateInterest()
+    {
+        System.out.println((double)interestRate*(amount/100));
+    }
+}
+
+class fd extends Account
+{
+    public void calculateInterest()
+    {
+        System.out.println((double)interestRate*(amount/100));
+    }
+}
+class rd extends Account
+{
+    public void calculateInterest()
+    {
+        System.out.println((double)interestRate*(amount/100));
+    }
+}
+
+public class App
+{
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        String accountType=sc.nextLine();
+        if(accountType.equals("sb"))
+        {
+            sb sb=new sb();
+            sb.amount=sc.nextInt();
+            sb.interestRate=4;
+            sb.calculateInterest();
+        }
+        if(accountType.equals("fd"))
+        {
+            fd fd=new fd();
+            fd.amount=sc.nextInt();
+            fd.days=sc.nextInt();
+            fd.age= sc.nextInt();
+            String seniorCitizen;
+            if(fd.age>60 && fd.amount<10000000)
+            {
+                seniorCitizen="true";
+            }
+            else if(fd.age<60 && fd.amount<10000000)
+            {
+                seniorCitizen="false";
+            }
+            else
+            {
+                seniorCitizen="doesn't matter";
+            }
+            if(seniorCitizen.equals("true"))
+            {
+                if(fd.days>=7 && fd.days<=14)
+                {
+                    fd.interestRate=5;
+                }
+                else if(fd.days>=15 && fd.days<=29)
+                {
+                    fd.interestRate=5.25;
+                }
+                else if(fd.days>=30 && fd.days<=45)
+                {
+                    fd.interestRate=6;
+                }
+                else if(fd.days>=45 && fd.days<=60)
+                {
+                    fd.interestRate=7.50;
+                }
+                else if(fd.days>=61 && fd.days<=184)
+                {
+                    fd.interestRate=8;
+                }
+                else
+                {
+                    fd.interestRate=8.50;
+                }
+            }
+            else if(seniorCitizen.equals("false"))
+            {
+                if(fd.days>=7 && fd.days<=14)
+                {
+                    fd.interestRate=4.5;
+                }
+                else if(fd.days>=15 && fd.days<=29)
+                {
+                    fd.interestRate=4.75;
+                }
+                else if(fd.days>=30 && fd.days<=45)
+                {
+                    fd.interestRate=5.5;
+                }
+                else if(fd.days>=45 && fd.days<=60)
+                {
+                    fd.interestRate=7;
+                }
+                else if(fd.days>=61 && fd.days<=184)
+                {
+                    fd.interestRate=7.5;
+                }
+                else
+                {
+                    fd.interestRate=8;
+                }
+            }
+            else
+            {
+                if(fd.days>=7 && fd.days<=14)
+                {
+                    fd.interestRate=6.50;
+                }
+                else if(fd.days>=15 && fd.days<=29)
+                {
+                    fd.interestRate=6.75;
+                }
+                else if(fd.days>=30 && fd.days<=45)
+                {
+                    fd.interestRate=6.75;
+                }
+                else if(fd.days>=45 && fd.days<=60)
+                {
+                    fd.interestRate=8;
+                }
+                else if(fd.days>=61 && fd.days<=184)
+                {
+                    fd.interestRate=8.50;
+                }
+                else
+                {
+                    fd.interestRate=10;
+                }
+            }
+            fd.calculateInterest();
+        }
+        if(accountType.equals("rd"))
+        {
+            rd rd=new rd();
+            rd.amount=sc.nextInt();
+            rd.months=sc.nextInt();
+            rd.age= sc.nextInt();
+            boolean seniorCitizen;
+            if(rd.age>60)
+            {
+                seniorCitizen=true;
+            }
+            else
+            {
+                seniorCitizen=false;
+            }
+            if(seniorCitizen)
+            {
+                if(rd.months==6)
+                {
+                    rd.interestRate=8;
+                }
+                else if(rd.months==9)
+                {
+                    rd.interestRate=8.25;
+                }
+                else if(rd.months==12)
+                {
+                    rd.interestRate=8.50;
+                }
+                else if(rd.months==15)
+                {
+                    rd.interestRate=8.75;
+                }
+                else if(rd.months==18)
+                {
+                    rd.interestRate=9;
+                }
+                else
+                {
+                    rd.interestRate=9.25;
+                }
+            }
+            else
+            {
+                if(rd.months==6)
+                {
+                    rd.interestRate=7.50;
+                }
+                else if(rd.months==9)
+                {
+                    rd.interestRate=7.75;
+                }
+                else if(rd.months==12)
+                {
+                    rd.interestRate=8;
+                }
+                else if(rd.months==15)
+                {
+                    rd.interestRate=8.25;
+                }
+                else if(rd.months==18)
+                {
+                    rd.interestRate=8.5;
+                }
+                else
+                {
+                    rd.interestRate=8.75;
+                }
+            }
+            rd.calculateInterest();
+        }
+    }
+}
